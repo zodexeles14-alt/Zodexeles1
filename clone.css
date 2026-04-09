@@ -1,0 +1,37 @@
+body{
+    background-color: white;
+    color:black;
+}
+.section{
+    background-color:black;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.sect{
+background-color: grey;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+img{
+    
+    width: 400px;
+    height :300px;
+}
+h1{
+    color:white;
+}
+button1{
+   background-color: white;
+    padding: 20px;
+   
+    border-radius: 10px;
+} 
+mag{
+    width:300px;
+    height: 500px;
+}
+marquee{
+    color:gold;
+}
