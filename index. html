@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JEZ BUILDERS | Services</title>
+  
+  <!-- Google Fonts: Space Grotesk & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ==================== ROOT VARIABLES & RESET ==================== */
+    :root {
+      --bg-dark: #0e1111;
+      --bg-card: #151918;
+      --bg-card-hover: #1c2220;
+      --text-main: #f0f3f1;
+      --text-muted: #8e9994;
+      --lime: #ccff00;
+      --coral: #ff6b4a;
+      --border-color: #242c28;
+      --font-main: 'Space Grotesk', sans-serif;
+      --font-code: 'Fira Code', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+    }
+
+    body {
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ==================== NAVBAR ==================== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(14, 17, 17, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--lime);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      color: var(--lime);
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.1;
+      letter-spacing: 1px;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--lime);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--lime);
+      color: var(--lime);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: var(--lime);
+      color: var(--bg-dark);
+      box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      padding: 12rem 5% 6rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+      min-height: 85vh;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--lime);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-code);
+    }
+
+    .tagline-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--lime);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--lime);
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title .highlight {
+      color: var(--lime);
+      display: block;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Terminal Code Card */
+    .terminal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .terminal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--lime), var(--coral));
+    }
+
+    .terminal-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .terminal-body {
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .code-keyword { color: var(--coral); }
+    .code-var { color: var(--text-main); }
+    .code-prop { color: var(--text-muted); }
+    .code-val { color: var(--lime); }
+
+    /* ==================== STATS SECTION ==================== */
+    .stats-bar {
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 3rem 5%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      background: rgba(21, 25, 24, 0.4);
+    }
+
+    .stat-item h3 {
+      font-size: 2.5rem;
+      color: var(--lime);
+      font-weight: 700;
+    }
+
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ==================== SERVICES SECTION ==================== */
+    .services-section {
+      padding: 8rem 5%;
+    }
+
+    .section-header {
+      margin-bottom: 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-main);
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--lime);
+      color: var(--bg-dark);
+      border-color: var(--lime);
+      font-weight: 600;
+    }
+
+    /* Grid Layout */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      border-radius: 6px;
+      transition: all 0.4s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--lime);
+      background: var(--bg-card-hover);
+    }
+
+    .service-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      background: rgba(204, 255, 0, 0.05);
+      border: 1px solid rgba(204, 255, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lime);
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+    }
+
+    .service-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      margin-bottom: 2rem;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-code);
+    }
+
+    .service-features li i {
+      color: var(--lime);
+      width: 14px;
+    }
+
+    .card-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tech-stack-icons {
+      display: flex;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .link-arrow {
+      color: var(--lime);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ==================== SELECTED WORK BANNER ==================== */
+    .featured-work-section {
+      padding: 4rem 5%;
+    }
+
+    .featured-banner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .banner-preview {
+      background: #111614;
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .banner-content {
+      background: var(--coral);
+      color: var(--bg-dark);
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .banner-meta {
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .banner-headline {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .btn-dark {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      padding: 0.8rem 1.6rem;
+      border: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-dark:hover {
+      opacity: 0.9;
+    }
+
+    /* ==================== PROCESS / WORKFLOW ==================== */
+    .process-section {
+      padding: 8rem 5%;
+      background: rgba(21, 25, 24, 0.2);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      border-left: 2px solid var(--border-color);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .process-step.active {
+      border-left-color: var(--lime);
+    }
+
+    .step-num {
+      font-family: var(--font-code);
+      color: var(--lime);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 4rem 5% 2rem;
+      background: var(--bg-dark);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--font-code);
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==================== RESPONSIVE DESIGN ==================== */
+    @media (max-width: 992px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 8rem;
+      }
+      .featured-banner {
+        grid-template-columns: 1fr;
+      }
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-bar {
+        grid-template-columns: 1fr;
+      }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="brand">
+      <div class="logo-circle">JZ</div>
+      <div class="brand-text">
+        JEZ BUILDERS
+        <span>INDEPENDENT DIGITAL BUILDERS</span>
+      </div>
+    </div>
+    
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services" class="active">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#process">Process</a>
+    </div>
+
+    <button class="btn-outline">
+      Start a Project <i data-lucide="arrow-up-right"></i>
+    </button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-left reveal">
+      <div class="tagline">
+        <span class="tagline-dot"></span> OUR CAPABILITIES / EST. 2019
+      </div>
+      <h1 class="hero-title">
+        Engineering solutions for <span class="highlight">digital growth.</span>
+      </h1>
+      <p class="hero-description">
+        We design, build, and deploy custom digital products engineered to help developer teams, startups, and tech brands win client trust.
+      </p>
+      <button class="btn-outline">
+        Discover Our Work <i data-lucide="arrow-down-right"></i>
+      </button>
+    </div>
+
+    <div class="hero-right reveal">
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="code-keyword">const</span> <span class="code-var">project</span> = {</p>
+          <p style="padding-left: 1.5rem;"><span class="code-prop">clarity:</span> <span class="code-val">true</span>,</p>
+          <p style="padding-left: 1.5rem;"><span class="code-prop">craft:</span> <span class="code-val">'high'</span>,</p>
+          <p style="padding-left: 1.5rem;"><span class="code-prop">impact:</span> <span class="code-val">'real'</span>,</p>
+          <p style="padding-left: 1.5rem;"><span class="code-prop">delivery:</span> <span class="code-val">'on-time'</span></p>
+          <p>};</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar reveal">
+    <div class="stat-item">
+      <h3>5+</h3>
+      <p>Years Experience</p>
+    </div>
+    <div class="stat-item">
+      <h3>40+</h3>
+      <p>Shipped Products</p>
+    </div>
+    <div class="stat-item">
+      <h3>99.9%</h3>
+      <p>Uptime Guaranteed</p>
+    </div>
+    <div class="stat-item">
+      <h3>100%</h3>
+      <p>Client Ownership</p>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services-section" id="services">
+    <div class="section-header reveal">
+      <div>
+        <div class="tagline"><span class="tagline-dot"></span> WHAT WE DO</div>
+        <h2 class="section-title">End-to-End Capabilities</h2>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterServices('all')">All</button>
+        <button class="tab-btn" onclick="filterServices('engineering')">Engineering</button>
+        <button class="tab-btn" onclick="filterServices('design')">Design</button>
+      </div>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Service Card 1 -->
+      <div class="service-card reveal" data-category="engineering">
+        <div>
+          <div class="service-icon-wrapper">
+            <i data-lucide="code"></i>
+          </div>
+          <h3 class="service-title">Full-Stack Web Engineering</h3>
+          <p class="service-desc">
+            Custom web applications built for speed, accessibility, and high performance. Scalable architecture powered by modern frameworks.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check"></i> React / Next.js Development</li>
+            <li><i data-lucide="check"></i> REST API & GraphQL Integration</li>
+            <li><i data-lucide="check"></i> High-Performance Optimization</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <span class="tech-stack-icons">React • Node • TS</span>
+          <a href="#" class="link-arrow">Details <i data-lucide="arrow-up-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Service Card 2 -->
+      <div class="service-card reveal" data-category="design">
+        <div>
+          <div class="service-icon-wrapper">
+            <i data-lucide="layout"></i>
+          </div>
+          <h3 class="service-title">UI/UX & Product Design</h3>
+          <p class="service-desc">
+            Clean, intuition-first design systems. We translate complex software flows into seamless, enjoyable user experiences.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check"></i> Wireframing & Interactive Prototypes</li>
+            <li><i data-lucide="check"></i> Component Design Systems</li>
+            <li><i data-lucide="check"></i> User Journey Mapping</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <span class="tech-stack-icons">Figma • Tailwind</span>
+          <a href="#" class="link-arrow">Details <i data-lucide="arrow-up-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Service Card 3 -->
+      <div class="service-card reveal" data-category="engineering">
+        <div>
+          <div class="service-icon-wrapper">
+            <i data-lucide="database"></i>
+          </div>
+          <h3 class="service-title">Backend & Cloud Systems</h3>
+          <p class="service-desc">
+            Secure, scalable server architectures and databases engineered for real-time reliability and data security.
+          </p>
+          <ul class="service-features">
+            <li><i data-lucide="check"></i> Database Design (SQL / NoSQL)</li>
+            <li><i data-lucide="check"></i> Microservices & Cloud Infrastructure</li>
+            <li><i data-lucide="check"></i> Authentication & Security Pipelines</li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <span class="tech-stack-icons">Python • SQL • AWS</span>
+          <a href="#" class="link-arrow">Details <i data-lucide="arrow-up-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURED WORK BANNER -->
+  <section class="featured-work-section reveal" id="projects">
+<div class="featured-banner">
+      <div class="banner-preview">
+        <div class="terminal-card" style="width: 100%;">
+          <div class="terminal-header">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="code-keyword">const</span> <span class="code-var">product</span> = {</p>
+            <p style="padding-left: 1.5rem;"><span class="code-prop">clarity:</span> <span class="code-val">true</span>,</p>
+            <p style="padding-left: 1.5rem;"><span class="code-prop">craft:</span> <span class="code-val">'high'</span>,</p>
+            <p style="padding-left: 1.5rem;"><span class="code-prop">impact:</span> <span class="code-val">'real'</span></p>
+            <p>};</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="banner-content">
+        <div class="banner-meta">SELECTED WORK / 2024</div>
+        <h2 class="banner-headline">Building a calmer way to manage complexity.</h2>
+        <button class="btn-dark">
+          View Projects <i data-lucide="arrow-up-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS / WORKFLOW SECTION -->
+  <section class="process-section reveal" id="process">
+    <div class="tagline"><span class="tagline-dot"></span> HOW WE WORK</div>
+    <h2 class="section-title">Our Engineering Methodology</h2>
+
+    <div class="process-grid">
+      <div class="process-step active">
+        <div class="step-num">01 / DISCOVER</div>
+        <h4 class="step-title">Requirements & Specs</h4>
+        <p class="step-desc">We clarify domain goals, refine target specs, and map out product requirements before writing a line of code.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">02 / ARCHITECT</div>
+        <h4 class="step-title">Design & System Spec</h4>
+        <p class="step-desc">We establish design tokens, UI components, and backend database schema definitions.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">03 / BUILD</div>
+        <h4 class="step-title">Agile Execution</h4>
+        <p class="step-desc">Iterative, clean, modular sprint cycles with active progress feedback and continuous integration.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num">04 / DEPLOY</div>
+        <h4 class="step-title">Ship & Scale</h4>
+        <p class="step-desc">Optimized continuous integration deployment, performance testing, and live delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="brand">
+        <div class="logo-circle">JZ</div>
+        <div class="brand-text">
+          JEZ BUILDERS
+          <span>BUILT WITH INTENT.</span>
+        </div>
+      </div>
+
+      <button class="btn-outline">
+        Start a Project <i data-lucide="arrow-up-right"></i>
+      </button>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 JEZBUILDERS. BUILT WITH INTENT.</p>
+      <p>BASED EVERYWHERE / WORKING WORLDWIDE</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT FOR INTERACTIVITY & ANIMATIONS -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Reveal Animation (Intersection Observer)
+    const observerOptions = {
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Service Filtering Logic
+    function filterServices(category) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+ 
